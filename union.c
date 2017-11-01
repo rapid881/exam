@@ -35,20 +35,6 @@ int		is_first(char *str, char c, int len)
 	return (0);
 }
 
-/*int		is_instring(char *str, char c)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == c)
-			return (1);
-		i++;
-	}
-	return (0);
-}*/
-
 void	ft_union(char *str, char *str2)
 {
 	int	i;
