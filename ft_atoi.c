@@ -1,36 +1,27 @@
-int	ft_is_whitespace(char c)
-{
-	if (c == ' ' || c == '\t' || c == '\n')
-		return (1);
-	else if (c == '\v' || c == '\f' || c == '\r')
-		return (1);
-	else
-		return (0);
-}
-
 int	ft_atoi(char *str)
 {
 	int	i;
-	int	res;
-	int sign;
+	int	is_neg;
+	int	number;
 
 	i = 0;
-	res = 0;
-	sign = 1;
-	while (ft_is_whitespace(str[i]))
+	is_neg = 0;
+	number = 0;
+	while ((str[i] == ' ') || (str[i] == '\t') || (str[i] == '\n')
+		|| (str[i] == '\v') || (str[i] == '\f') || (str[i] == '\r'))
 		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (str[i] == 45)
+		is_neg = 1;
+	if ((str[i] == 45) || (str[i] == 43))
+		i++;
+	while ((str[i] >= 48) && (str[i] <= 57))
 	{
-		if (str[i + 1] >= '0' && str[i + 1] <= '9')
-		{
-			sign = (str[i] == '+') ? 1 : -1;
-			i++;
-		}
-		else
-			return (0);
+		number *= 10;
+		number += ((int)str[i] - 48);
+		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-		res = res * 10 + str[i++] - '0';
-	res *= sign;
-	return (res);
+	if (is_neg)
+		return (-number);
+	else
+		return (number);
 }

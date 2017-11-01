@@ -13,34 +13,20 @@ char	*ft_ulstr(char *str)
 	while (str[i] != '\0')
 	{
 		if (str[i] >= 'A' && str[i] <= 'Z')
-		{
 			str[i] += 32;
-			ft_putchar(str[i]);
-			i++;
-		}
-		if (str[i] >= 'a' && str[i] <= 'z')
-		{
+		else if (str[i] >= 'a' && str[i] <= 'z')
 			str[i] -= 32;
-			ft_putchar(str[i]);
-			i++;
-		}	
+		ft_putchar(str[i]);
+		i++;
 	}
 	return (0);
 }
 
 int main(int argc, char **argv)
 {
-	int i;
-
-	i = 1;
-	if (argc == 1)
-		ft_putchar('\n');
-	else
-		while (i < argc)
-		{
-			ft_ulstr(argv[i]);
-			i++;
-		}
+	if (argc == 2)
+		ft_ulstr(argv[1]);
+	ft_putchar('\n');
 	return (0);
 }
 
